@@ -16,8 +16,16 @@ class MyApp extends StatelessWidget {
     // MaterialApp : Material 테마 (+ Custom)
     return MaterialApp(
       home: Scaffold( // 상중하로 나눔
+
         appBar: AppBar( // 상단
           backgroundColor: ( isDarkTheme? Colors.black : Colors.white ),
+          leading: IconButton( // leading: 제일 왼쪽 메뉴/내정보 아이콘
+            icon: const Icon(Icons.menu),
+            tooltip: '메뉴',
+            onPressed: () {
+              print('menu click');
+            },
+          ),
           title: Row(
             children: [
               Image.asset(
@@ -35,51 +43,98 @@ class MyApp extends StatelessWidget {
               )
             ]
           ),
-          actions: <Widget>[
+          actions: [
             IconButton(
-              icon: const Icon(Icons.menu),
-              tooltip: 'menu',
+              icon: const Icon(Icons.search),
+              tooltip: '검색',
               onPressed: () {
-                print('menu click');
+                print('search click');
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.person_outline),
+              tooltip: '내 정보',
+              onPressed: () {
+                print('person_outline click');
               },
             ),
           ],
         ),
-        body: Column(
-          children: [
-            Row( // 중단
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly, // [가로축] 가운데 정렬 (display flex 느낌)
-              //crossAxisAlignment: CrossAxisAlignment.center, // [세로축] (body: Column인 경우)
-              // 위 명령어는 Ctrl + Space 눌러서 자동완성도 가능
-              children: [
-                Container( width: 20, height: 20, color: Colors.blue ),
-                Container( width: 20, height: 20, color: Colors.red ),
-                Icon(Icons.star),
-                Container( width: 20, height: 20, color: Colors.greenAccent ),
-                Container( width: 20, height: 20, color: Colors.yellow ),
-              ]
-            ),
-            Row(
-              children: [
-                Icon(Icons.shop)
-              ]
-            )
-          ]
+
+        body: SizedBox( // TextButton(), IconButton(), ElevatedButton()
+          // child: IconButton(
+          //   icon: Icon(Icons.star),
+          //   onPressed: (){
+          //     print('아이콘 버튼 클릭');
+          //   }
+          // )
+
+          // child: ElevatedButton(
+          //   child: Text('글자'),
+          //   onPressed: (){
+          //     print('버튼 클릭');
+          //   },
+          //   style: ButtonStyle(
+          //
+          //   ),
+          // ),
+
+          // child: Text(
+          //   '안녕',
+          //   style: TextStyle(
+          //     color: Color(0xff00ff00),
+          //     fontSize: 100,
+          //     backgroundColor: Colors.red,
+          //     fontWeight: FontWeight.w700, // 폰트 두께
+          //   ),
+          //   onPressed: (){
+          //     print('아이콘 버튼 클릭');
+          //   }
+          // ),
         ),
+
         bottomNavigationBar: BottomAppBar( // 하단
           child: SizedBox(
             //height: 200,
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Icon(Icons.calendar_month),
-                  Icon(Icons.alarm),
-                  Icon(
-                    Icons.home,
-                    size: 40,
+                  IconButton(
+                    icon: const Icon(Icons.calendar_month),
+                    tooltip: '1',
+                    onPressed: () {
+                      print('1');
+                    },
                   ),
-                  Icon(Icons.person),
-                  Icon(Icons.settings),
+                  IconButton(
+                    icon: const Icon(Icons.alarm),
+                    tooltip: '2',
+                    onPressed: () {
+                      print('2');
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.home),
+                    iconSize: 40,
+                    tooltip: '3',
+                    onPressed: () {
+                      print('3');
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.person),
+                    tooltip: '4',
+                    onPressed: () {
+                      print('4');
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.settings),
+                    tooltip: '5',
+                    onPressed: () {
+                      print('5');
+                    },
+                  ),
                 ]
             )
           )
