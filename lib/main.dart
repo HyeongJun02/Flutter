@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 var isDarkTheme = false;
@@ -46,16 +48,16 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: [
             Row( // 중단
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly, // [가로축] 가운데 정렬 (display flex 느낌)
-                //crossAxisAlignment: CrossAxisAlignment.center, // [세로축] (body: Column인 경우)
-                // 위 명령어는 Ctrl + Space 눌러서 자동완성도 가능
-                children: [
-                  Container( width: 20, height: 20, color: Colors.blue ),
-                  Container( width: 20, height: 20, color: Colors.red ),
-                  Icon(Icons.star),
-                  Container( width: 20, height: 20, color: Colors.greenAccent ),
-                  Container( width: 20, height: 20, color: Colors.yellow ),
-                ]
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly, // [가로축] 가운데 정렬 (display flex 느낌)
+              //crossAxisAlignment: CrossAxisAlignment.center, // [세로축] (body: Column인 경우)
+              // 위 명령어는 Ctrl + Space 눌러서 자동완성도 가능
+              children: [
+                Container( width: 20, height: 20, color: Colors.blue ),
+                Container( width: 20, height: 20, color: Colors.red ),
+                Icon(Icons.star),
+                Container( width: 20, height: 20, color: Colors.greenAccent ),
+                Container( width: 20, height: 20, color: Colors.yellow ),
+              ]
             ),
             Row(
               children: [
@@ -64,18 +66,23 @@ class MyApp extends StatelessWidget {
             )
           ]
         ),
-        bottomNavigationBar: Row( // 하단
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Icon(Icons.calendar_month),
-            Icon(Icons.alarm),
-            Icon(
-              Icons.home,
-              size: 40,
-            ),
-            Icon(Icons.person),
-            Icon(Icons.settings),
-          ]
+        bottomNavigationBar: BottomAppBar( // 하단
+          child: SizedBox(
+            //height: 200,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.calendar_month),
+                  Icon(Icons.alarm),
+                  Icon(
+                    Icons.home,
+                    size: 40,
+                  ),
+                  Icon(Icons.person),
+                  Icon(Icons.settings),
+                ]
+            )
+          )
         ),
       )
     );
