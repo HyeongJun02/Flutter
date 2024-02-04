@@ -1,30 +1,82 @@
 import 'package:flutter/material.dart';
 
+var isDarkTheme = false;
+
 void main() {
   runApp(const MyApp());
 }
 
-// stless 이후 Tap 누를 시 자동 코드 생성
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
 
+    // MaterialApp : Material 테마 (+ Custom)
     return MaterialApp(
-      /*
-      - 글자: Text('내용')
-      - 아이콘: Icon(Icons.star)
-      아이콘 이름은 플루터 홈페이지
-      - 이미지: Image.asset('경로')
-      Image.asset('../assets/Ogu00.jpg')
-      practice 폴더 안에 assets 폴더 생성 후 assets 폴더 안에 이미지 넣기
-      이미지 등록해야 됨. pubspec.yaml(외부 패키지 및 라이브러리 정리) 파일 안에
-      - 박스: Container() / SizedBox()
-      Container( width: 50, height: 50, color: Colors.teal )
-      크기 단위: LP, 50LP == 1.2cm
-       */
-      home: Center(
-        child: Container( width: 50, height: 50, color: Colors.teal )
+      home: Scaffold( // 상중하로 나눔
+        appBar: AppBar( // 상단
+          backgroundColor: ( isDarkTheme? Colors.black : Colors.white ),
+          title: Row(
+            children: [
+              Image.asset(
+                '../assets/memologo_0.jpg',
+                width: 40,
+                height: 40,
+                fit: BoxFit.fitHeight,
+              ),
+              Text(
+                style: TextStyle(
+                  fontSize: 23,
+                  color: ( isDarkTheme? Colors.white : Colors.black ),
+                ),
+                'memotive',
+              )
+            ]
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.menu),
+              tooltip: 'menu',
+              onPressed: () {
+                print('menu click');
+              },
+            ),
+          ],
+        ),
+        body: Column(
+          children: [
+            Row( // 중단
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly, // [가로축] 가운데 정렬 (display flex 느낌)
+                //crossAxisAlignment: CrossAxisAlignment.center, // [세로축] (body: Column인 경우)
+                // 위 명령어는 Ctrl + Space 눌러서 자동완성도 가능
+                children: [
+                  Container( width: 20, height: 20, color: Colors.blue ),
+                  Container( width: 20, height: 20, color: Colors.red ),
+                  Icon(Icons.star),
+                  Container( width: 20, height: 20, color: Colors.greenAccent ),
+                  Container( width: 20, height: 20, color: Colors.yellow ),
+                ]
+            ),
+            Row(
+              children: [
+                Icon(Icons.shop)
+              ]
+            )
+          ]
+        ),
+        bottomNavigationBar: Row( // 하단
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(Icons.calendar_month),
+            Icon(Icons.alarm),
+            Icon(
+              Icons.home,
+              size: 40,
+            ),
+            Icon(Icons.person),
+            Icon(Icons.settings),
+          ]
+        ),
       )
     );
   }
