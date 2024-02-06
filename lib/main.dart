@@ -77,21 +77,44 @@ class MyApp extends StatelessWidget {
 
 
 
-        
-        body: Row( // 중단
-          children: [
-            Flexible(
-              flex: 3,
-              child: Container( color: Colors.blue ),
-            ),
-            Flexible(
-              flex: 7,
-              child: Container( color: Colors.green ),
-            ),
-            Expanded( // flex: 1인 Flexible 박스
-              child: Container( color: Colors.red ),
-            ),
-          ],
+
+        body: Container( // 중단
+          height: 150,
+          padding: EdgeInsets.all(10),
+          child: Row(
+            children: [
+              Image.asset('../assets/memologo_0.jpg', width: 150,),
+              Flexible(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '우산 팔아요.',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text('안양시 호계동'),
+                    Text(
+                      '7000원',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(Icons.favorite_outline),
+                        Text('4'),
+                      ]
+                    )
+                  ]
+                )
+              )
+            ],
+          )
         ),
 
 
