@@ -1,12 +1,20 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:practice/login.dart'; // 테스트 스크린
 
 var isDarkTheme = false;
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(
+  MaterialApp(
+    title: 'Navigator',
+    initialRoute: '/',
+    routes: {
+      '/': (context) => MyApp(),
+      '/login': (context) => LoginScreen(),
+      '/': (context) => MyApp()
+    }
+    //home: MyApp(),
+  ),
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -55,43 +63,40 @@ class MyApp extends StatelessWidget {
               icon: const Icon(Icons.person_outline),
               tooltip: '내 정보',
               onPressed: () {
-                print('person_outline click');
+                Navigator.pushNamed(context, '/login');
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(builder: (context) => const TestScreen())
+                // );
+                print('login click');
               },
             ),
           ],
         ),
 
-        body: SizedBox( // TextButton(), IconButton(), ElevatedButton()
-          // child: IconButton(
-          //   icon: Icon(Icons.star),
-          //   onPressed: (){
-          //     print('아이콘 버튼 클릭');
-          //   }
-          // )
 
-          // child: ElevatedButton(
-          //   child: Text('글자'),
-          //   onPressed: (){
-          //     print('버튼 클릭');
-          //   },
-          //   style: ButtonStyle(
-          //
-          //   ),
-          // ),
 
-          // child: Text(
-          //   '안녕',
-          //   style: TextStyle(
-          //     color: Color(0xff00ff00),
-          //     fontSize: 100,
-          //     backgroundColor: Colors.red,
-          //     fontWeight: FontWeight.w700, // 폰트 두께
-          //   ),
-          //   onPressed: (){
-          //     print('아이콘 버튼 클릭');
-          //   }
-          // ),
+
+        
+        body: Row( // 중단
+          children: [
+            Flexible(
+              flex: 3,
+              child: Container( color: Colors.blue ),
+            ),
+            Flexible(
+              flex: 7,
+              child: Container( color: Colors.green ),
+            ),
+            Expanded( // flex: 1인 Flexible 박스
+              child: Container( color: Colors.red ),
+            ),
+          ],
         ),
+
+
+
+
 
         bottomNavigationBar: BottomAppBar( // 하단
           child: SizedBox(
