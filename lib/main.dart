@@ -29,7 +29,17 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(),
         // 레이아웃 용 위젯들이 너무 길다면? 커스텀 위젯
-        body: ShopItem(),
+        body: ListView(
+          children: [
+            ContactUI(),
+            ContactUI(),
+            ContactUI(),
+            ContactUI(),
+            ContactUI(),
+            ContactUI(),
+            ContactUI(),
+          ]
+        )
       )
     );
   }
@@ -40,13 +50,33 @@ class MyApp extends StatelessWidget {
 
 // 커스텀 위젯
 // stless 후 tap
-class ShopItem extends StatelessWidget {
-  const ShopItem({Key? key}) : super(key: key);
+class ContactUI extends StatelessWidget {
+  const ContactUI({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      child: Text('안녕'),
+    return Flexible(
+      flex: 1,
+      child: Container(
+        //color: Colors.red,
+        padding: EdgeInsets.fromLTRB(10,5,0,5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(
+              Icons.contact_page_outlined,
+              size: 50,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('미모티브', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('010-1234-5678'),
+              ],
+            )
+          ],
+        )
+      ),
     );
   }
 }
